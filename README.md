@@ -1,1 +1,1 @@
-todo
+Úkolem hry je dostat černý čverec nahoru.  
