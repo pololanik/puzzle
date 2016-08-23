@@ -1,0 +1,155 @@
+$background-color: #f1f1f1;
+
+body {
+  background-color: $background-color;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+/** PANEL **/
+
+.panel-wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.panel {
+  background: wheat;
+  position: relative;
+
+  .panel-corner-left, .panel-corner-right {
+    position: absolute;
+    top: 0;
+    background: $background-color;
+  }
+
+  .panel-corner-left {
+    left: 0;
+  }
+
+  .panel-corner-right {
+    right: 0;
+  }
+}
+
+/** BLOCK **/
+
+.block-wrap {
+  transition: all .4s;
+  transform: translate3d(0, 0, 0);
+  position: absolute;
+}
+
+.block {
+  position: relative;
+  cursor: pointer;
+
+  polygon {
+    fill: #888;
+    stroke: wheat;
+    strokeWidth: 2;
+  }
+
+  &.is-main {
+    polygon {
+      fill: #333;
+    }
+  }
+
+  &.active {
+    polygon {
+      fill: red
+    }
+  }
+}
+
+/** ARROW **/
+
+$arrow-width: 45px;
+$arrow-height: 75px;
+$arrow-space: 5px;
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  width: $arrow-width;
+  height: $arrow-height;
+  transition: all 100ms ease-in-out;
+
+  polyline {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &:active {
+    polyline {
+      stroke-width: 2;
+    }
+  }
+
+}
+
+.arrow-left {
+  margin-left: - $arrow-width - $arrow-space;
+  left: 0;
+  top: calc(50% -  #{$arrow-height/2});
+}
+
+.arrow-right {
+  right: - $arrow-width - $arrow-space;
+  top: calc(50% - #{$arrow-height/2});
+  transform: scaleX(-1)
+}
+
+.arrow-top {
+  top: -65px;
+  left: calc(50% - #{$arrow-width/2});
+  transform: rotate(90deg);
+  transition: top 0.3s;
+}
+
+.arrow-bottom {
+  bottom: -65px;
+  left: calc(50% - #{$arrow-width/2});
+  transform: rotate(-90deg);
+}
+
+/** CONGRATULATION **/
+
+.congratulation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s;
+  opacity: 0;
+  flex-flow: column nowrap;
+
+  &.show {
+    pointer-events: auto;
+    display: flex;
+    opacity: 1;
+  }
+
+  .label {
+    color: #fff;
+    text-align: center;
+    font-size: 42px;
+  }
+
+}
